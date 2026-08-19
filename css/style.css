@@ -1259,4 +1259,224 @@ footer {
         opacity: 1;
     }
 }
+   /* =========================================================
+   PROJECT CARDS - AETHERIS
+========================================================= */
+
+.project-card-top {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   PROJECT STATUS
+========================================================= */
+
+.project-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    border: 1px solid transparent;
+}
+
+.project-status::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+}
+
+
+/* Active */
+
+.project-status.active {
+    color: #9fffc5;
+
+    background:
+        rgba(70, 220, 135, 0.07);
+
+    border-color:
+        rgba(70, 220, 135, 0.16);
+}
+
+.project-status.active::before {
+    background: #6cffaa;
+
+    box-shadow:
+        0 0 8px rgba(108, 255, 170, 0.8);
+}
+
+
+/* Development */
+
+.project-status.development {
+    color: #ffe39a;
+
+    background:
+        rgba(255, 194, 75, 0.07);
+
+    border-color:
+        rgba(255, 194, 75, 0.16);
+}
+
+.project-status.development::before {
+    background: #ffd15c;
+
+    box-shadow:
+        0 0 8px rgba(255, 209, 92, 0.8);
+}
+
+
+/* =========================================================
+   PROJECT TAGS
+========================================================= */
+
+.project-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: auto;
+
+    margin-bottom: 24px;
+}
+
+.project-tags span {
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+
+    color: #8e9bb5;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   PROJECT FOOTER
+========================================================= */
+
+.project-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.07);
+}
+
+.project-type {
+    color: #71809b;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+.project-footer .project-link {
+    margin: 0;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PROJECT ICON VARIATION
+========================================================= */
+
+.project-icon {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.project-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    top: -25px;
+    right: -25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(114, 229, 255, 0.25),
+            transparent 70%
+        );
+}
+
+
+/* =========================================================
+   PROJECT CARD HOVER
+========================================================= */
+
+.project-card:hover .project-icon {
+    border-color:
+        rgba(114, 229, 255, 0.3);
+
+    box-shadow:
+        0 0 25px rgba(86, 168, 255, 0.12);
+}
+
+.project-card:hover .project-status.active::before {
+    animation:
+        statusPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.7);
+    }
+}
 }
