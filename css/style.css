@@ -1052,9 +1052,15 @@ footer {
 
     pointer-events: none;
 
-    z-index: -3;
+    z-index: 0;
 
     opacity: 0.75;
+   header,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
 }
 /* =========================================================
    HERO LOGO
