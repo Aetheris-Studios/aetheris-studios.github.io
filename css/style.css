@@ -1,34 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* =========================
-   VARIABLES
-========================= */
+/* =========================================================
+   AETHERIS STUDIOS
+   Visual Identity
+========================================================= */
 
 :root {
-    --background: #070b18;
-    --background-secondary: #0c1224;
-    --surface: rgba(255, 255, 255, 0.06);
-    --surface-hover: rgba(255, 255, 255, 0.10);
+    --background: #050914;
+    --background-secondary: #0a1020;
 
-    --text: #f5f7ff;
-    --text-secondary: #aab3cc;
+    --surface: rgba(13, 22, 43, 0.72);
+    --surface-hover: rgba(21, 34, 63, 0.88);
 
-    --primary: #79c7ff;
-    --primary-bright: #a9ddff;
-    --secondary: #9b8cff;
+    --text: #f5f8ff;
+    --text-secondary: #9daac4;
 
-    --border: rgba(255, 255, 255, 0.10);
+    --blue: #56a8ff;
+    --blue-bright: #9bd5ff;
+
+    --violet: #8d6cff;
+    --violet-bright: #bdadff;
+
+    --cyan: #72e5ff;
+
+    --border: rgba(150, 190, 255, 0.13);
 
     --radius: 18px;
+
     --max-width: 1200px;
 
     --transition: 0.3s ease;
 }
 
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -42,10 +49,67 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background: var(--background);
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(86, 168, 255, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(141, 108, 255, 0.08),
+            transparent 30%
+        ),
+        var(--background);
+
     color: var(--text);
+
     line-height: 1.6;
+
     overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    background-image:
+        radial-gradient(
+            1px 1px at 10% 20%,
+            rgba(255,255,255,0.7),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 30% 70%,
+            rgba(255,255,255,0.5),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 70% 30%,
+            rgba(255,255,255,0.6),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 90% 80%,
+            rgba(255,255,255,0.5),
+            transparent
+        );
+
+    background-size:
+        240px 240px,
+        310px 310px,
+        190px 190px,
+        270px 270px;
+
+    opacity: 0.35;
 }
 
 a {
@@ -59,43 +123,13 @@ img {
 }
 
 
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(121, 199, 255, 0.12),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(155, 140, 255, 0.10),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(121, 199, 255, 0.06),
-            transparent 35%
-        );
-
-    pointer-events: none;
-    z-index: -1;
-}
-
-
-/* =========================
-   NAVBAR
-========================= */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 header {
     position: fixed;
+
     top: 0;
     left: 0;
 
@@ -103,147 +137,303 @@ header {
 
     z-index: 1000;
 
-    background: rgba(7, 11, 24, 0.75);
-    backdrop-filter: blur(16px);
+    background: rgba(5, 9, 20, 0.72);
+
+    backdrop-filter: blur(18px);
 
     border-bottom: 1px solid var(--border);
+
+    transition:
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+header.scrolled {
+    background: rgba(5, 9, 20, 0.94);
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .navbar {
     max-width: var(--max-width);
-    margin: auto;
 
     height: 76px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: auto;
 
     padding: 0 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
 }
+
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 
+    font-size: 17px;
+
     font-weight: 700;
-    font-size: 18px;
+
+    letter-spacing: -0.3px;
 }
 
 .logo img {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
 
     object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(86, 168, 255, 0.45)
+        );
+
+    transition:
+        transform var(--transition),
+        filter var(--transition);
 }
+
+.logo:hover img {
+    transform: rotate(-4deg) scale(1.05);
+
+    filter:
+        drop-shadow(
+            0 0 20px rgba(114, 229, 255, 0.75)
+        );
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
 
 .nav-links {
     display: flex;
+
     align-items: center;
-    gap: 32px;
+
+    gap: 30px;
 
     list-style: none;
 }
 
 .nav-links a {
+    position: relative;
+
     color: var(--text-secondary);
 
     font-size: 14px;
+
     font-weight: 500;
 
-    transition: var(--transition);
+    transition: color var(--transition);
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--violet)
+        );
+
+    transition: width var(--transition);
 }
 
 .nav-links a:hover {
     color: var(--text);
 }
 
+.nav-links a:hover::after {
+    width: 100%;
+}
 
-/* =========================
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     min-height: 100vh;
 
+    max-width: none;
+
+    margin: 0;
+
+    padding:
+        130px 24px
+        100px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    padding: 120px 24px 80px;
-
     position: relative;
+
+    overflow: hidden;
 }
+
+
+/* Central cosmic glow */
 
 .hero::before {
     content: "";
 
     position: absolute;
 
-    width: 600px;
-    height: 600px;
+    width: 750px;
+    height: 750px;
 
-    background: radial-gradient(
-        circle,
-        rgba(121, 199, 255, 0.12),
-        transparent 70%
-    );
+    border-radius: 50%;
 
-    filter: blur(30px);
+    background:
+        radial-gradient(
+            circle,
+            rgba(86, 168, 255, 0.13),
+            rgba(141, 108, 255, 0.07) 35%,
+            transparent 70%
+        );
 
-    z-index: -1;
+    filter: blur(15px);
+
+    animation:
+        heroGlow 8s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* Secondary violet glow */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    right: -100px;
+    bottom: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(141, 108, 255, 0.12),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+@keyframes heroGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
 }
 
 .hero-content {
-    max-width: 850px;
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
 }
 
-.hero-subtitle,
-.section-label {
-    color: var(--primary);
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-subtitle {
+    color: var(--cyan);
 
     font-size: 13px;
+
     font-weight: 700;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 20px rgba(114, 229, 255, 0.4);
 }
 
 .hero h1 {
     font-size: clamp(48px, 8vw, 92px);
 
-    line-height: 1.05;
+    line-height: 1.02;
+
+    letter-spacing: -5px;
 
     font-weight: 800;
 
-    letter-spacing: -4px;
-
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 .hero h1 span {
     display: block;
 
-    background: linear-gradient(
-        90deg,
-        var(--primary),
-        var(--secondary)
-    );
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue-bright),
+            var(--violet-bright)
+        );
 
     -webkit-background-clip: text;
     background-clip: text;
 
     color: transparent;
+
+    text-shadow:
+        0 0 35px rgba(86, 168, 255, 0.12);
 }
 
 .hero-description {
-    max-width: 650px;
+    max-width: 680px;
 
     margin: auto;
 
@@ -254,6 +444,11 @@ header {
     line-height: 1.8;
 }
 
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .hero-buttons {
     display: flex;
 
@@ -261,145 +456,227 @@ header {
 
     gap: 14px;
 
-    margin-top: 40px;
+    margin-top: 42px;
 }
-
-
-/* =========================
-   BUTTONS
-========================= */
 
 .btn {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 13px 22px;
+    padding: 14px 24px;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
     font-size: 14px;
+
     font-weight: 600;
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
 }
 
 .btn.primary {
-    background: var(--primary);
-    color: #07101c;
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--violet)
+        );
 
     box-shadow:
-        0 0 30px rgba(121, 199, 255, 0.20);
+        0 8px 30px rgba(86, 168, 255, 0.22);
 }
 
 .btn.primary:hover {
-    background: var(--primary-bright);
-
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 
     box-shadow:
-        0 0 40px rgba(121, 199, 255, 0.35);
+        0 12px 45px rgba(86, 168, 255, 0.38);
 }
 
 .btn.secondary {
-    border: 1px solid var(--border);
-
-    background: var(--surface);
-
     color: var(--text);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border: 1px solid var(--border);
 }
 
 .btn.secondary:hover {
-    background: var(--surface-hover);
+    transform: translateY(-3px);
 
-    transform: translateY(-2px);
+    background:
+        rgba(255,255,255,0.09);
+
+    border-color:
+        rgba(114, 229, 255, 0.3);
 }
 
 
-/* =========================
+/* =========================================================
    SECTIONS
-========================= */
+========================================================= */
 
-section {
+section:not(.hero) {
     max-width: var(--max-width);
 
     margin: auto;
 
-    padding: 110px 24px;
+    padding:
+        110px 24px;
 }
 
 .section-header {
     margin-bottom: 50px;
 }
 
+.section-label {
+    color: var(--cyan);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+}
+
 .section-header h2 {
-    font-size: clamp(32px, 5vw, 48px);
+    font-size: clamp(34px, 5vw, 50px);
+
+    line-height: 1.1;
 
     letter-spacing: -2px;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .section-header > p:last-child {
     color: var(--text-secondary);
+
+    font-size: 16px;
 }
 
 
-/* =========================
+/* =========================================================
    PROJECTS
-========================= */
+========================================================= */
 
 .projects-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 20px;
 }
 
 .project-card {
+    position: relative;
+
     padding: 30px;
 
-    background: var(--surface);
+    min-height: 280px;
 
-    border: 1px solid var(--border);
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 31, 58, 0.75),
+            rgba(8, 14, 30, 0.75)
+        );
+
+    border:
+        1px solid var(--border);
 
     border-radius: var(--radius);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
 
-    transition: var(--transition);
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(86, 168, 255, 0.16),
+            transparent 70%
+        );
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 
-    background: var(--surface-hover);
-
-    border-color: rgba(121, 199, 255, 0.25);
+    border-color:
+        rgba(86, 168, 255, 0.32);
 
     box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.25);
+        0 20px 60px rgba(0, 0, 0, 0.28),
+        0 0 30px rgba(86, 168, 255, 0.05);
 }
 
 .project-icon {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     margin-bottom: 24px;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
-    background: rgba(121, 199, 255, 0.10);
+    color: var(--blue-bright);
 
-    color: var(--primary);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(86, 168, 255, 0.13),
+            rgba(141, 108, 255, 0.13)
+        );
 
-    font-size: 22px;
+    border:
+        1px solid rgba(86, 168, 255, 0.15);
+
+    font-size: 23px;
+
+    box-shadow:
+        0 0 25px rgba(86, 168, 255, 0.06);
 }
 
 .project-card h3 {
@@ -419,24 +696,28 @@ section {
 }
 
 .project-link {
-    color: var(--primary);
+    margin-top: auto;
+
+    color: var(--blue-bright);
 
     font-size: 14px;
 
     font-weight: 600;
+
+    transition: color var(--transition);
 }
 
 .project-link:hover {
-    color: var(--primary-bright);
+    color: var(--cyan);
 }
 
 
-/* =========================
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-content {
-    max-width: 750px;
+    max-width: 760px;
 }
 
 .about-content p {
@@ -450,9 +731,9 @@ section {
 }
 
 
-/* =========================
+/* =========================================================
    TECHNOLOGIES
-========================= */
+========================================================= */
 
 .technology-list {
     display: flex;
@@ -463,49 +744,76 @@ section {
 }
 
 .technology-list span {
-    padding: 10px 18px;
+    padding: 11px 19px;
 
     border-radius: 999px;
 
-    background: var(--surface);
+    background:
+        rgba(255,255,255,0.035);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     color: var(--text-secondary);
 
     font-size: 14px;
 
-    transition: var(--transition);
+    transition:
+        color var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition);
 }
 
 .technology-list span:hover {
     color: var(--text);
 
-    border-color: rgba(121, 199, 255, 0.30);
+    background:
+        rgba(86, 168, 255, 0.07);
 
-    background: var(--surface-hover);
+    border-color:
+        rgba(86, 168, 255, 0.3);
+
+    transform: translateY(-2px);
 }
 
 
-/* =========================
+/* =========================================================
    GITHUB
-========================= */
+========================================================= */
 
 .github {
     text-align: center;
 
-    padding-top: 130px;
-    padding-bottom: 130px;
+    padding-top: 140px !important;
+
+    padding-bottom: 140px !important;
 }
 
 .github-content {
-    max-width: 700px;
+    max-width: 720px;
 
     margin: auto;
+
+    padding: 60px 30px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(86, 168, 255, 0.08),
+            rgba(13, 22, 43, 0.65)
+        );
+
+    backdrop-filter: blur(15px);
 }
 
 .github h2 {
-    font-size: clamp(34px, 5vw, 52px);
+    font-size: clamp(35px, 5vw, 54px);
 
     letter-spacing: -2px;
 
@@ -515,18 +823,20 @@ section {
 .github p:not(.section-label) {
     color: var(--text-secondary);
 
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 
-    background: rgba(0, 0, 0, 0.15);
+    background:
+        rgba(2, 5, 12, 0.65);
 }
 
 .footer-content {
@@ -534,36 +844,98 @@ footer {
 
     margin: auto;
 
-    padding: 28px 24px;
+    padding: 30px 24px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 }
 
-.footer-content p {
+.footer-content p,
+.footer-links a {
     color: var(--text-secondary);
 
     font-size: 13px;
 }
 
 .footer-links a {
-    color: var(--text-secondary);
-
-    font-size: 13px;
-
-    transition: var(--transition);
+    transition: color var(--transition);
 }
 
 .footer-links a:hover {
-    color: var(--text);
+    color: var(--cyan);
 }
 
 
-/* =========================
+/* =========================================================
+   JAVASCRIPT ANIMATIONS
+========================================================= */
+
+.hero-content {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.hero-content.loaded {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.mouse-light {
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(86, 168, 255, 0.055),
+            transparent 70%
+        );
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: -1;
+
+    transition:
+        left 0.15s ease-out,
+        top 0.15s ease-out;
+}
+
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media (max-width: 900px) {
 
@@ -572,7 +944,7 @@ footer {
     }
 
     .hero h1 {
-        letter-spacing: -2px;
+        letter-spacing: -3px;
     }
 }
 
@@ -588,7 +960,15 @@ footer {
     }
 
     .hero {
-        padding-top: 110px;
+        padding:
+            110px 20px
+            80px;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 13vw, 65px);
+
+        letter-spacing: -2px;
     }
 
     .hero-description {
@@ -606,8 +986,13 @@ footer {
         margin-right: auto;
     }
 
-    section {
-        padding: 80px 20px;
+    section:not(.hero) {
+        padding:
+            80px 20px;
+    }
+
+    .github-content {
+        padding: 45px 20px;
     }
 
     .footer-content {
@@ -616,5 +1001,25 @@ footer {
         gap: 12px;
 
         text-align: center;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
     }
 }
